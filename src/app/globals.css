@@ -7,8 +7,18 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-playfair);
   --font-mono: var(--font-geist-mono);
+
+  /* Brand colors */
+  --color-brand-black: #1A1A1A;
+  --color-brand-offwhite: #FAFAF5;
+  --color-brand-gold: #C9A84C;
+  --color-brand-gold-light: #C9A84C33;
+  --color-brand-gold-hover: #B8983F;
+
+  /* shadcn mappings */
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,72 +58,38 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #FAFAF5;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --primary: #1A1A1A;
+  --primary-foreground: #FAFAF5;
+  --secondary: #F0EDE6;
+  --secondary-foreground: #1A1A1A;
+  --muted: #F0EDE6;
+  --muted-foreground: #6B6B6B;
+  --accent: #C9A84C;
+  --accent-foreground: #1A1A1A;
+  --destructive: #DC2626;
+  --border: rgba(26, 26, 26, 0.1);
+  --input: rgba(26, 26, 26, 0.1);
+  --ring: #C9A84C;
+  --chart-1: #C9A84C;
+  --chart-2: #1A1A1A;
+  --chart-3: #6B6B6B;
+  --chart-4: #D4B86A;
+  --chart-5: #F0EDE6;
+  --radius: 0rem;
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FAFAF5;
+  --sidebar-primary: #C9A84C;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent: #2A2A2A;
+  --sidebar-accent-foreground: #FAFAF5;
+  --sidebar-border: rgba(250, 250, 245, 0.1);
+  --sidebar-ring: #C9A84C;
 }
 
 @layer base {
@@ -125,5 +101,21 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+/* Custom utility classes for the brand */
+@layer utilities {
+  .text-gold {
+    color: #C9A84C;
+  }
+  .bg-gold {
+    background-color: #C9A84C;
+  }
+  .tracking-brand {
+    letter-spacing: 0.15em;
+  }
+  .tracking-brand-wide {
+    letter-spacing: 0.25em;
   }
 }
