@@ -1,8 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Sparkles, ArrowRight, Camera } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ProductImage } from "@/components/product-image";
+import { WishlistButton } from "@/components/wishlist-button";
+import { QuickAdd } from "@/components/quick-add";
 import { products as allProducts, formatPrice } from "@/lib/data";
 
 const featuredProducts = allProducts
@@ -16,13 +17,19 @@ export default function Home() {
       {/* ── Hero Section ───────────────────────────────────────────── */}
       <section className="relative h-[600px] md:h-[720px] overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
-            alt="Fashion editorial — model in elegant dark outfit"
-            fill
-            className="object-cover"
-            priority
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+            poster="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
+          >
+            <source
+              src="https://assets.mixkit.co/videos/805/805-1080.mp4"
+              type="video/mp4"
+            />
+          </video>
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent" />
@@ -81,9 +88,10 @@ export default function Home() {
               className="group border-0 ring-0 bg-transparent p-0 rounded-none overflow-visible"
             >
               <CardContent className="p-0">
-                <Link href={`/product/${product.id}`} className="block">
+                <Link href={`/products/${product.id}`} className="block">
                   {/* Image container with hover overlay */}
                   <div className="relative aspect-[3/4] bg-brand-black/5 overflow-hidden mb-4">
+                    <WishlistButton product={product} />
                     <ProductImage
                       src={product.images[0]}
                       alt={product.name}
@@ -92,15 +100,8 @@ export default function Home() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
 
-                    {/* Hover overlay with Try On button */}
-                    {product.tryOnCompatible && (
-                      <div className="absolute inset-0 bg-brand-black/0 group-hover:bg-brand-black/40 transition-colors duration-300 flex items-end justify-center pb-6">
-                        <span className="inline-flex items-center gap-2 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-brand-gold px-6 py-3 text-xs font-semibold text-brand-black tracking-brand">
-                          <Sparkles className="h-3.5 w-3.5" />
-                          TRY IT ON
-                        </span>
-                      </div>
-                    )}
+                    {/* Quick Add to Cart */}
+                    <QuickAdd product={product} />
                   </div>
 
                   {/* Product info */}

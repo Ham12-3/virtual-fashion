@@ -9,7 +9,7 @@ export const collections: Collection[] = [
     slug: "summer-in-santorini",
     description:
       "Sun-drenched elegance inspired by the Aegean coast. Breathable linens, flowing silhouettes, and a palette drawn from whitewashed villages and turquoise waters.",
-    bannerImage: "/images/collections/santorini-banner.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1763604608266-6ee862e562da?w=1920&q=80",
     scenarioDescription:
       "Each piece styled against the iconic blue domes and sunlit terraces of Santorini.",
   },
@@ -19,7 +19,7 @@ export const collections: Collection[] = [
     slug: "urban-noir",
     description:
       "After-dark sophistication for the modern city. Sharp tailoring, rich textures, and an unapologetically dark palette.",
-    bannerImage: "/images/collections/urban-noir-banner.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1639678763679-73d600a85b2d?w=1920&q=80",
     scenarioDescription:
       "Shot on rain-slicked city streets under neon light, capturing metropolitan edge.",
   },
@@ -29,7 +29,7 @@ export const collections: Collection[] = [
     slug: "bohemian-dreams",
     description:
       "Free-spirited artistry meets refined craft. Hand-embroidered details, earthy tones, and relaxed proportions for the modern wanderer.",
-    bannerImage: "/images/collections/bohemian-dreams-banner.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1753874384065-1a8c5adc8436?w=1920&q=80",
     scenarioDescription:
       "Photographed in golden-hour fields and rustic ateliers, evoking effortless romance.",
   },
@@ -46,9 +46,9 @@ export const products: Product[] = [
       "Relaxed-fit shirt in garment-washed French linen. Mother-of-pearl buttons and a camp collar give it an effortless Mediterranean feel.",
     price: 480,
     images: [
-      "/images/products/aegean-linen-shirt-1.jpg",
-      "/images/products/aegean-linen-shirt-2.jpg",
-      "/images/products/aegean-linen-shirt-3.jpg",
+      "https://images.unsplash.com/photo-1766113492742-396e7d928a58?w=800&q=80",
+      "https://images.unsplash.com/photo-1519743670471-034311358429?w=800&q=80",
+      "https://images.unsplash.com/photo-1558171813-4c088753af8f?w=800&q=80",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -68,9 +68,9 @@ export const products: Product[] = [
       "A flowing midi sundress in lightweight cotton voile. Delicate pintuck detailing at the bodice with an open back and adjustable straps.",
     price: 890,
     images: [
-      "/images/products/caldera-sundress-1.jpg",
-      "/images/products/caldera-sundress-2.jpg",
-      "/images/products/caldera-sundress-3.jpg",
+      "https://images.unsplash.com/photo-1746730921745-5f6afa4c56c3?w=800&q=80",
+      "https://images.unsplash.com/photo-1746864946880-607973ca1c3b?w=800&q=80",
+      "https://images.unsplash.com/photo-1595353794806-702a05e814de?w=800&q=80",
     ],
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -89,8 +89,8 @@ export const products: Product[] = [
       "Handcrafted flat sandals in vegetable-tanned Italian leather. Ankle-wrap straps and a cushioned insole for all-day comfort.",
     price: 420,
     images: [
-      "/images/products/oia-leather-sandals-1.jpg",
-      "/images/products/oia-leather-sandals-2.jpg",
+      "https://images.unsplash.com/photo-1625318880107-49baad6765fd?w=800&q=80",
+      "https://images.unsplash.com/photo-1663693586817-f7e0ceb27bd7?w=800&q=80",
     ],
     sizes: ["36", "37", "38", "39", "40", "41"],
     colors: [
@@ -109,8 +109,8 @@ export const products: Product[] = [
       "Asymmetric wrap skirt in crinkled linen blend. Side-tie closure and a raw-edge hem give it artisanal character.",
     price: 560,
     images: [
-      "/images/products/fira-wrap-skirt-1.jpg",
-      "/images/products/fira-wrap-skirt-2.jpg",
+      "https://images.unsplash.com/photo-1673823429135-c7b0d40cfe56?w=800&q=80",
+      "https://images.unsplash.com/photo-1611956581419-af8b753a5cef?w=800&q=80",
     ],
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -123,19 +123,19 @@ export const products: Product[] = [
     tags: ["linen", "summer"],
   },
 
-  // ─── Urban Noir (4) ────────────────────────────────────────────────
+  // ─── Urban Noir — Men's (4) ────────────────────────────────────────
   {
     id: "noir-001",
     name: "Montmartre Wool Blazer",
     description:
-      "Double-breasted blazer in Italian super-120s wool. Peak lapels, a nipped waist, and silk lining make it equally at home in the boardroom and the bar.",
+      "Double-breasted blazer in Italian super-120s wool. Peak lapels, a structured shoulder, and silk lining — equally at home in the boardroom and the bar.",
     price: 2450,
     images: [
-      "/images/products/montmartre-blazer-1.jpg",
-      "/images/products/montmartre-blazer-2.jpg",
-      "/images/products/montmartre-blazer-3.jpg",
+      "https://images.unsplash.com/photo-1644269444230-c6d1f2722e10?w=800&q=80",
+      "https://images.unsplash.com/photo-1608253458784-355ada87ba76?w=800&q=80",
+      "https://images.unsplash.com/photo-1738999633481-529934314fed?w=800&q=80",
     ],
-    sizes: ["XS", "S", "M", "L", "XL"],
+    sizes: ["S", "M", "L", "XL", "XXL"],
     colors: [
       { name: "Black", hex: "#1A1A1A" },
       { name: "Charcoal", hex: "#36454F" },
@@ -152,11 +152,11 @@ export const products: Product[] = [
       "Slim-cut moto jacket in butter-soft lambskin. Gunmetal hardware, asymmetric zip, and quilted shoulder panels for an edge that never goes out of style.",
     price: 3200,
     images: [
-      "/images/products/nuit-leather-jacket-1.jpg",
-      "/images/products/nuit-leather-jacket-2.jpg",
-      "/images/products/nuit-leather-jacket-3.jpg",
+      "https://images.unsplash.com/photo-1762160768571-934c45a9d0b4?w=800&q=80",
+      "https://images.unsplash.com/photo-1740329181397-dc8126a9e442?w=800&q=80",
+      "https://images.unsplash.com/photo-1751246672691-5013957e5c55?w=800&q=80",
     ],
-    sizes: ["XS", "S", "M", "L"],
+    sizes: ["S", "M", "L", "XL"],
     colors: [
       { name: "Noir", hex: "#0D0D0D" },
       { name: "Oxblood", hex: "#4A0000" },
@@ -173,10 +173,10 @@ export const products: Product[] = [
       "Sleek Chelsea boots in polished calfskin with a 40mm Cuban heel. Elasticated side panels and a pull-tab for easy on-and-off.",
     price: 1180,
     images: [
-      "/images/products/boulevard-boots-1.jpg",
-      "/images/products/boulevard-boots-2.jpg",
+      "https://images.unsplash.com/photo-1581803274668-261faa12dca7?w=800&q=80",
+      "https://images.unsplash.com/photo-1572550907105-dc3c8e55f5b1?w=800&q=80",
     ],
-    sizes: ["38", "39", "40", "41", "42", "43", "44"],
+    sizes: ["40", "41", "42", "43", "44", "45"],
     colors: [
       { name: "Black", hex: "#1A1A1A" },
     ],
@@ -187,24 +187,24 @@ export const products: Product[] = [
   },
   {
     id: "noir-004",
-    name: "Silk Noir Midi Dress",
+    name: "Obsidian Tailored Trousers",
     description:
-      "Figure-skimming midi dress in heavy silk crepe. High neckline, open back, and a concealed side zip create understated evening drama.",
-    price: 1280,
+      "Slim-tapered trousers in Italian stretch wool. Flat front, side adjusters, and a pressed crease for sharp, modern tailoring.",
+    price: 980,
     images: [
-      "/images/products/silk-noir-dress-1.jpg",
-      "/images/products/silk-noir-dress-2.jpg",
-      "/images/products/silk-noir-dress-3.jpg",
+      "https://images.unsplash.com/photo-1584865288642-42078afe6942?w=800&q=80",
+      "https://images.unsplash.com/photo-1618886614638-80e3c103d31a?w=800&q=80",
+      "https://images.unsplash.com/photo-1577394580379-0b59ce5e1f01?w=800&q=80",
     ],
-    sizes: ["XS", "S", "M", "L"],
+    sizes: ["28", "30", "32", "34", "36", "38"],
     colors: [
       { name: "Black", hex: "#1A1A1A" },
-      { name: "Midnight", hex: "#191970" },
+      { name: "Charcoal", hex: "#36454F" },
     ],
-    category: "Dresses",
+    category: "Bottoms",
     collectionSlug: "urban-noir",
     tryOnCompatible: true,
-    tags: ["silk", "evening", "bestseller"],
+    tags: ["wool", "tailored", "bestseller"],
   },
 
   // ─── Bohemian Dreams (4) ───────────────────────────────────────────
@@ -215,9 +215,9 @@ export const products: Product[] = [
       "Floor-length tiered dress in washed cotton gauze. Balloon sleeves, a drawstring waist, and hand-dyed ombré finish evoke desert sunsets.",
     price: 760,
     images: [
-      "/images/products/marrakech-dress-1.jpg",
-      "/images/products/marrakech-dress-2.jpg",
-      "/images/products/marrakech-dress-3.jpg",
+      "https://images.unsplash.com/photo-1518573053307-b4e045569e53?w=800&q=80",
+      "https://images.unsplash.com/photo-1591085439840-23dbb7ff0609?w=800&q=80",
+      "https://images.unsplash.com/photo-1623609163849-27f393222319?w=800&q=80",
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     colors: [
@@ -236,8 +236,8 @@ export const products: Product[] = [
       "Cropped blouse in organic cotton with intricate hand-embroidered floral motifs. Puff sleeves, a smocked back panel, and mother-of-pearl buttons.",
     price: 540,
     images: [
-      "/images/products/atlas-embroidered-top-1.jpg",
-      "/images/products/atlas-embroidered-top-2.jpg",
+      "https://images.unsplash.com/photo-1669197798911-68a45e28e35a?w=800&q=80",
+      "https://images.unsplash.com/photo-1693987263090-9db764295654?w=800&q=80",
     ],
     sizes: ["XS", "S", "M", "L"],
     colors: [
@@ -256,8 +256,8 @@ export const products: Product[] = [
       "Oversized tote bag handwoven from sustainably sourced raffia. Leather-trimmed handles and an interior zip pocket. Each piece is unique.",
     price: 680,
     images: [
-      "/images/products/nomad-woven-tote-1.jpg",
-      "/images/products/nomad-woven-tote-2.jpg",
+      "https://images.unsplash.com/photo-1763056531605-4e75d78e5016?w=800&q=80",
+      "https://images.unsplash.com/photo-1641934823408-e6b3b546873d?w=800&q=80",
     ],
     sizes: ["One Size"],
     colors: [
@@ -276,8 +276,8 @@ export const products: Product[] = [
       "Open-front cardigan in hand-crocheted mercerised cotton. Scalloped edges, a relaxed drop-shoulder fit, and fringe detailing at the hem.",
     price: 620,
     images: [
-      "/images/products/essaouira-cardigan-1.jpg",
-      "/images/products/essaouira-cardigan-2.jpg",
+      "https://images.unsplash.com/photo-1695902264392-9d0a9137ca4d?w=800&q=80",
+      "https://images.unsplash.com/photo-1552959933-595ad8829c0f?w=800&q=80",
     ],
     sizes: ["S", "M", "L", "XL"],
     colors: [
@@ -288,6 +288,48 @@ export const products: Product[] = [
     collectionSlug: "bohemian-dreams",
     tryOnCompatible: true,
     tags: ["crochet", "artisanal"],
+  },
+
+  // ─── Accessories (cross-collection) ──────────────────────────────
+  {
+    id: "acc-001",
+    name: "Noir Aviator Sunglasses",
+    description:
+      "Titanium-frame aviators with polarised smoke lenses. Ultra-lightweight at 22g with adjustable nose pads and a brushed gunmetal finish.",
+    price: 520,
+    images: [
+      "https://images.unsplash.com/photo-1762706334838-ea8425b43116?w=800&q=80",
+      "https://images.unsplash.com/photo-1759130021732-fadfd047a1f8?w=800&q=80",
+    ],
+    sizes: ["One Size"],
+    colors: [
+      { name: "Gunmetal", hex: "#2A3439" },
+      { name: "Gold", hex: "#C9A84C" },
+    ],
+    category: "Accessories",
+    collectionSlug: "urban-noir",
+    tryOnCompatible: false,
+    tags: ["titanium", "polarised", "new-arrival"],
+  },
+  {
+    id: "acc-002",
+    name: "Signature Leather Belt",
+    description:
+      "Hand-stitched belt in full-grain Italian leather. Solid brass buckle with an engraved Maison Élégance monogram.",
+    price: 380,
+    images: [
+      "https://images.unsplash.com/photo-1664286074240-d7059e004dff?w=800&q=80",
+      "https://images.unsplash.com/photo-1649860359778-0bb95cb88ea9?w=800&q=80",
+    ],
+    sizes: ["80cm", "85cm", "90cm", "95cm", "100cm"],
+    colors: [
+      { name: "Black", hex: "#1A1A1A" },
+      { name: "Cognac", hex: "#834A21" },
+    ],
+    category: "Accessories",
+    collectionSlug: "urban-noir",
+    tryOnCompatible: false,
+    tags: ["leather", "classic", "bestseller"],
   },
 ];
 

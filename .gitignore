@@ -10,6 +10,8 @@
 !.yarn/releases
 !.yarn/versions
 
+
+
 # testing
 /coverage
 
@@ -45,9 +47,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Python
-__pycache__/
-*.pyc
-*.pyo
-backend/.venv/
-backend/generated/
+# generated try-on images
+/public/generated/
+
+
+
+# AI 
+.claude/

@@ -13,18 +13,6 @@ const nextConfig: NextConfig = {
     ],
     unoptimized: false,
   },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "http://localhost:8000/api/:path*",
-      },
-      {
-        source: "/generated/:path*",
-        destination: "http://localhost:8000/generated/:path*",
-      },
-    ];
-  },
 };
 
 export default nextConfig;

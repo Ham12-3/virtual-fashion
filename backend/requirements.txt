@@ -1,7 +1,0 @@
-fastapi[standard]==0.115.12
-google-cloud-aiplatform>=1.60.0
-Pillow>=10.4.0
-python-dotenv>=1.0.1
-slowapi>=0.1.9
-python-multipart>=0.0.9
-uvicorn[standard]>=0.30.0

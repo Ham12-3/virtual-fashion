@@ -3,19 +3,22 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Sparkles, ShoppingBag, Check } from "lucide-react";
+import { Sparkles, ShoppingBag, Check, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { ProductImage } from "@/components/product-image";
 import { useCartStore } from "@/store/cart-store";
+import { useWishlistStore } from "@/store/wishlist-store";
 import { formatPrice } from "@/lib/data";
 import type { Product } from "@/types";
 
 export function ProductDetailClient({ product }: { product: Product }) {
   const router = useRouter();
   const addItem = useCartStore((s) => s.addItem);
+  const { toggleItem, isInWishlist } = useWishlistStore();
+  const wishlisted = isInWishlist(product.id);
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
@@ -67,6 +70,19 @@ export function ProductDetailClient({ product }: { product: Product }) {
               sizes="(max-width: 1024px) 100vw, 50vw"
               priority
             />
+            <button
+              onClick={() => toggleItem(product)}
+              className="absolute top-4 right-4 p-2.5 bg-white/90 hover:bg-white transition-colors"
+              aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
+            >
+              <Heart
+                className={`h-5 w-5 transition-colors ${
+                  wishlisted
+                    ? "fill-red-500 text-red-500"
+                    : "text-brand-black/60 hover:text-red-500"
+                }`}
+              />
+            </button>
           </div>
         </div>
 
