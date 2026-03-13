@@ -18,8 +18,13 @@ export function generateStaticParams() {
   return collections.map((c) => ({ slug: c.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const collection = getCollectionBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const collection = getCollectionBySlug(slug);
   if (!collection) return {};
   return {
     title: collection.name,
@@ -31,15 +36,16 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function CollectionPage({
+export default async function CollectionPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const collection = getCollectionBySlug(params.slug);
+  const { slug } = await params;
+  const collection = getCollectionBySlug(slug);
   if (!collection) notFound();
 
-  const products = getProductsByCollection(params.slug);
+  const products = getProductsByCollection(slug);
 
   return (
     <>

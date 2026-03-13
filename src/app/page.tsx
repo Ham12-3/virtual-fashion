@@ -1,9 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, ArrowRight, Camera } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ProductImage } from "@/components/product-image";
 import { WishlistButton } from "@/components/wishlist-button";
 import { QuickAdd } from "@/components/quick-add";
+import { HeroVideo } from "@/components/hero-video";
 import { products as allProducts, formatPrice } from "@/lib/data";
 
 const featuredProducts = allProducts
@@ -16,21 +18,15 @@ export default function Home() {
     <>
       {/* ── Hero Section ───────────────────────────────────────────── */}
       <section className="relative h-[600px] md:h-[720px] overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-            poster="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/805/805-1080.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
+        {/* Poster image loads instantly, video fades in when ready */}
+        <Image
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&q=80"
+          alt="Fashion editorial"
+          fill
+          className="object-cover"
+          priority
+        />
+        <HeroVideo />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black/70 via-transparent to-transparent" />
 

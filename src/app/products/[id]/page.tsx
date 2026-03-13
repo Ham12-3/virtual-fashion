@@ -1,13 +1,18 @@
 import { notFound } from "next/navigation";
-import { products, getProductById, formatPrice } from "@/lib/data";
+import { products, getProductById } from "@/lib/data";
 import { ProductDetailClient } from "./product-detail-client";
 
 export function generateStaticParams() {
   return products.map((p) => ({ id: p.id }));
 }
 
-export function generateMetadata({ params }: { params: { id: string } }) {
-  const product = getProductById(params.id);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const product = getProductById(id);
   if (!product) return {};
   return {
     title: product.name,
@@ -19,12 +24,13 @@ export function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default function ProductPage({
+export default async function ProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const product = getProductById(params.id);
+  const { id } = await params;
+  const product = getProductById(id);
   if (!product) notFound();
 
   return <ProductDetailClient product={product} />;
