@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { getProductById } from "@/lib/data";
-import { writeFile, mkdir } from "fs/promises";
-import { join } from "path";
 import { randomUUID } from "crypto";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
@@ -131,9 +129,6 @@ Generate a photorealistic image of this exact person wearing this exact garment.
 - Keep the person's original background
 - Output ONLY the final photorealistic image, no text or labels`;
 
-  const outputDir = join(process.cwd(), "public", "generated");
-  await mkdir(outputDir, { recursive: true });
-
   const urls: string[] = [];
 
   for (let i = 0; i < TRYON_IMAGE_COUNT; i++) {
@@ -167,12 +162,8 @@ Generate a photorealistic image of this exact person wearing this exact garment.
     if (response.candidates?.[0]?.content?.parts) {
       for (const part of response.candidates[0].content.parts) {
         if (part.inlineData?.data) {
-          const fileId = randomUUID().replace(/-/g, "").slice(0, 12);
-          const fileName = `tryon_${fileId}.png`;
-          const filePath = join(outputDir, fileName);
-
-          await writeFile(filePath, Buffer.from(part.inlineData.data, "base64"));
-          urls.push(`/generated/${fileName}`);
+          const mimeType = part.inlineData.mimeType || "image/png";
+          urls.push(`data:${mimeType};base64,${part.inlineData.data}`);
           break;
         }
       }
@@ -189,19 +180,6 @@ Generate a photorealistic image of this exact person wearing this exact garment.
 // ── Placeholder Fallback ───────────────────────────────────────────
 
 async function generatePlaceholders(personBytes: Buffer): Promise<string[]> {
-  const outputDir = join(process.cwd(), "public", "generated");
-  await mkdir(outputDir, { recursive: true });
-
-  const urls: string[] = [];
-
-  for (let i = 0; i < TRYON_IMAGE_COUNT; i++) {
-    const fileId = randomUUID().replace(/-/g, "").slice(0, 12);
-    const fileName = `tryon_${fileId}.jpg`;
-    const filePath = join(outputDir, fileName);
-
-    await writeFile(filePath, personBytes);
-    urls.push(`/generated/${fileName}`);
-  }
-
-  return urls;
+  const dataUrl = `data:image/jpeg;base64,${personBytes.toString("base64")}`;
+  return Array.from({ length: TRYON_IMAGE_COUNT }, () => dataUrl);
 }

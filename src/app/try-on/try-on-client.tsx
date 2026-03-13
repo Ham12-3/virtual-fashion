@@ -169,25 +169,43 @@ export function TryOnClient() {
   // ── Download helper ──────────────────────────────────────────
   async function handleDownload(url: string, index: number) {
     try {
-      const res = await fetch(url);
-      const blob = await res.blob();
-      const blobUrl = URL.createObjectURL(blob);
       const a = document.createElement("a");
-      a.href = blobUrl;
+      if (url.startsWith("data:")) {
+        // Data URL — download directly
+        a.href = url;
+      } else {
+        // Regular URL — fetch as blob
+        const res = await fetch(url);
+        const blob = await res.blob();
+        a.href = URL.createObjectURL(blob);
+      }
       a.download = `maison-elegance-tryon-${index + 1}.jpg`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(blobUrl);
+      if (!url.startsWith("data:")) URL.revokeObjectURL(a.href);
     } catch {
-      // Fallback: open in new tab
       window.open(url, "_blank");
     }
   }
 
   // ── Share helper ─────────────────────────────────────────────
   async function handleShare(url: string) {
-    if (navigator.share) {
+    if (url.startsWith("data:") && navigator.share) {
+      // Convert data URL to blob for native share
+      try {
+        const res = await fetch(url);
+        const blob = await res.blob();
+        const file = new File([blob], "maison-elegance-tryon.jpg", { type: blob.type });
+        await navigator.share({
+          title: "My Virtual Try-On — Maison Élégance",
+          text: "Check out how this looks on me!",
+          files: [file],
+        });
+      } catch {
+        // user cancelled or unsupported
+      }
+    } else if (navigator.share) {
       try {
         await navigator.share({
           title: "My Virtual Try-On — Maison Élégance",
