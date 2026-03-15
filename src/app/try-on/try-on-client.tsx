@@ -28,6 +28,54 @@ import { useTryOnStore } from "@/store/try-on-store";
 import type { Product, TryOnResult } from "@/types";
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const UPLOAD_MAX_SIZE = 4 * 1024 * 1024; // 4MB — compress above this to stay within server limits
+const MAX_DIMENSION = 2048; // max width/height after resize
+
+/** Compress an image file using canvas if it exceeds UPLOAD_MAX_SIZE */
+async function compressImage(file: File): Promise<File> {
+  if (file.size <= UPLOAD_MAX_SIZE) return file;
+
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      let { width, height } = img;
+      // Scale down if either dimension exceeds MAX_DIMENSION
+      if (width > MAX_DIMENSION || height > MAX_DIMENSION) {
+        const scale = Math.min(MAX_DIMENSION / width, MAX_DIMENSION / height);
+        width = Math.round(width * scale);
+        height = Math.round(height * scale);
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject(new Error("Canvas not supported"));
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Try quality levels until under limit
+      let quality = 0.85;
+      const tryCompress = () => {
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) return reject(new Error("Compression failed"));
+            if (blob.size > UPLOAD_MAX_SIZE && quality > 0.3) {
+              quality -= 0.15;
+              tryCompress();
+            } else {
+              resolve(new File([blob], file.name, { type: "image/jpeg" }));
+            }
+          },
+          "image/jpeg",
+          quality,
+        );
+      };
+      tryCompress();
+    };
+    img.onerror = () => reject(new Error("Failed to load image for compression"));
+    img.src = URL.createObjectURL(file);
+  });
+}
 
 type Stage = "setup" | "generating" | "result";
 
@@ -111,8 +159,11 @@ export function TryOnClient() {
     }, 500);
 
     try {
+      // Compress large images to avoid 413 errors
+      const imageToUpload = await compressImage(personImage);
+
       const formData = new FormData();
-      formData.append("person_image", personImage);
+      formData.append("person_image", imageToUpload);
       formData.append("product_id", selectedProduct.id);
 
       const res = await fetch("/api/try-on", {
