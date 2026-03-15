@@ -501,7 +501,7 @@ export function TryOnClient() {
             </div>
 
             <p className="text-xs text-brand-black/30">
-              This usually takes 10–30 seconds
+              Please wait while we generate your look
             </p>
           </div>
         </div>
