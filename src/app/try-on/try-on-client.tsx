@@ -615,23 +615,30 @@ export function TryOnClient() {
             </button>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {tryOnHistory.slice(0, 8).map((item) => (
-              <div key={item.id} className="relative aspect-[3/4] bg-brand-black/5 overflow-hidden">
-                {item.resultImageUrls[0] && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={item.resultImageUrls[0]}
-                    alt="Previous try-on"
-                    className="w-full h-full object-cover"
-                  />
-                )}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-black/60 to-transparent p-3">
-                  <p className="text-[10px] text-brand-offwhite/70">
-                    {new Date(item.createdAt).toLocaleDateString()}
-                  </p>
+            {tryOnHistory.slice(0, 8).map((item) => {
+              const thumbnail = item.resultImageUrls?.[0] || item.productImageUrl;
+              return (
+                <div key={item.id} className="relative aspect-[3/4] bg-brand-black/5 overflow-hidden">
+                  {thumbnail ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={thumbnail}
+                      alt="Previous try-on"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-brand-black/20 text-xs">
+                      No preview
+                    </div>
+                  )}
+                  <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-brand-black/60 to-transparent p-3">
+                    <p className="text-[10px] text-brand-offwhite/70">
+                      {new Date(item.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
